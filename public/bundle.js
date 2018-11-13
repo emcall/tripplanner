@@ -104,7 +104,18 @@ eval("/* Mapbox GL JS is licensed under the 3-Clause BSD License. Full text of l
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("//console.log(\"hello I am index dot js\");\nconst mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\n\nmapboxgl.accessToken =\n  'pk.eyJ1IjoiZW1jYWxsIiwiYSI6ImNqb2c5Z2c2ajAweWIzcXF0YW1rZzh0ZmoifQ.z1xBi5a_7winSv5VNu_YVA';\n\nconst map = new mapboxgl.Map({\n  container: 'map',\n  center: [-74.009, 40.705], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: 'mapbox://styles/mapbox/streets-v10', // mapbox has lots of different map styles available.\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("\nconst mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\nconst  markers  = __webpack_require__(/*! ./marker */ \"./src/marker.js\");\n\nmapboxgl.accessToken =\n  'pk.eyJ1IjoiZW1jYWxsIiwiYSI6ImNqb2c5Z2c2ajAweWIzcXF0YW1rZzh0ZmoifQ.z1xBi5a_7winSv5VNu_YVA';\n\n\n  // function buildMarker (coords, type){\n  //   console.log('makin a marker');\n  //   const markerDomEl = document.createElement('div');\n  //   markerDomEl.style.width = '32px';\n  //   markerDomEl.style.height = '39px';\n  //   markerDomEl.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';\n  //   new mapboxgl.Marker(markerDomEl).setLngLat(coords).addTo(map);\n  // }\n\nconst map = new mapboxgl.Map({\n  container: 'map',\n  center: [-74.009, 40.705], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: 'mapbox://styles/mapbox/streets-v10', // mapbox has lots of different map styles available.\n});\n\n document.getElementById('activity').addEventListener('click', function(){\n  markers(map, [-74.009, 40.705], 'activity');\n });\n\n\n// const ourElement = document.createElement('p')\n// ourElement.innerHTML = 'i am some words';\n\n// new mapboxgl.Marker(ourElement).setLngLat([-74.009151, 40.705086]).addTo(map);\n\nmodule.exports = 'hello';\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/marker.js":
+/*!***********************!*\
+  !*** ./src/marker.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\nconst mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\n// const map = require('./index');\n// console.log(map);\nmapboxgl.accessToken =\n  'pk.eyJ1IjoiZW1jYWxsIiwiYSI6ImNqb2c5Z2c2ajAweWIzcXF0YW1rZzh0ZmoifQ.z1xBi5a_7winSv5VNu_YVA';\n\n// const map = new mapboxgl.Map({\n//   container: 'map',\n//   center: [-74.009, 40.705], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n//   zoom: 12, // starting zoom\n//   style: 'mapbox://styles/mapbox/streets-v10', // mapbox has lots of different map styles available.\n// });\n\n\nfunction buildMarker(map, coords, type){\n  const markerDomEl = document.createElement('div');\n  markerDomEl.style.width = '32px';\n  markerDomEl.style.height = '39px';\n  markerDomEl.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';\n  new mapboxgl.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);\n}\n// buildMarker([-74.009, 40.705], 'sdsd');\n// module.exports =\n//   function (coords, type){\n//   const markerDomEl = document.createElement('div');\n//   markerDomEl.style.width = '32px';\n//   markerDomEl.style.height = '39px';\n//   markerDomEl.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)';\n//   new mapboxgl.Marker(markerDomEl).setLngLat(coords).addTo(map);\n  // }\n//\n\nmodule.exports = buildMarker;\n\n\n//# sourceURL=webpack:///./src/marker.js?");
 
 /***/ })
 
